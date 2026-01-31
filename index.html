@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAYOB TECHNOLOGIES | Elite Security & IT Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --red: #ff003c;
+            --blue: #0066ff;
+            --bg: #020205;
+            --card: #0a0a0f;
+            --border: rgba(255, 255, 255, 0.08);
+            --text: #ffffff;
+            --muted: #a0a0ab;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.5;
+        }
+
+        h1, h2, h3, .logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+
+        /* --- GLOW ELEMENTS --- */
+        .glow-bg {
+            position: fixed;
+            width: 50vw; height: 50vw;
+            background: radial-gradient(circle, rgba(0, 102, 255, 0.15) 0%, transparent 70%);
+            top: -10%; left: -10%; z-index: -1;
+        }
+        .glow-bg-red {
+            position: fixed;
+            width: 40vw; height: 40vw;
+            background: radial-gradient(circle, rgba(255, 0, 60, 0.1) 0%, transparent 70%);
+            bottom: -10%; right: -10%; z-index: -1;
+        }
+
+        /* --- NAV --- */
+        nav {
+            position: sticky; top: 0; z-index: 1000;
+            background: rgba(2, 2, 5, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 1.2rem 6%;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo { font-size: 1.4rem; letter-spacing: -1px; }
+        .logo span { color: var(--red); }
+        .nav-links a { color: var(--muted); text-decoration: none; margin-left: 2rem; font-size: 0.9rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--blue); }
+
+        /* --- HERO --- */
+        .hero {
+            padding: 8rem 6% 4rem;
+            text-align: center;
+            background: radial-gradient(50% 50% at 50% 50%, rgba(0, 102, 255, 0.05) 0%, transparent 100%);
+        }
+        .hero h1 { font-size: clamp(3rem, 10vw, 6rem); line-height: 0.9; margin-bottom: 1.5rem; }
+        .hero span.blue { color: var(--blue); }
+        .hero span.red { color: var(--red); }
+
+        /* --- SECTION HEADERS --- */
+        .section-header {
+            padding: 4rem 6% 2rem;
+            display: flex; justify-content: space-between; align-items: flex-end;
+        }
+        .section-header h2 { font-size: 2.5rem; border-left: 4px solid var(--blue); padding-left: 1rem; }
+        .section-header.security h2 { border-left-color: var(--red); }
+
+        /* --- PRODUCT GRIDS --- */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            padding: 0 6% 4rem;
+        }
+
+        .product-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 1.5rem;
+            transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+        }
+        .product-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--blue);
+            box-shadow: 0 15px 30px rgba(0, 102, 255, 0.15);
+        }
+        .product-card.sec:hover {
+            border-color: var(--red);
+            box-shadow: 0 15px 30px rgba(255, 0, 60, 0.15);
+        }
+
+        .img-placeholder {
+            width: 100%; height: 200px;
+            background: #16161d;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            display: flex; align-items: center; justify-content: center;
+            color: #333; font-weight: 800;
+        }
+
+        .price { font-size: 1.5rem; font-weight: 700; color: #fff; margin: 1rem 0; }
+        .badge {
+            font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+            padding: 4px 10px; border-radius: 100px; background: rgba(0, 102, 255, 0.1);
+            color: var(--blue);
+        }
+        .badge.red { background: rgba(255, 0, 60, 0.1); color: var(--red); }
+
+        .buy-btn {
+            width: 100%; padding: 0.8rem; border-radius: 10px; border: none;
+            background: var(--blue); color: white; font-weight: 700; cursor: pointer;
+            transition: 0.3s;
+        }
+        .buy-btn.red { background: var(--red); }
+        .buy-btn:hover { filter: brightness(1.2); }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #050508;
+            padding: 6rem 6% 2rem;
+            border-top: 1px solid var(--border);
+        }
+        .footer-grid {
+            display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem;
+        }
+
+        /* --- CART --- */
+        #cart-trigger {
+            background: var(--blue); color: #fff; padding: 0.5rem 1rem;
+            border-radius: 100px; font-weight: 700; border: none; cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glow-bg"></div>
+    <div class="glow-bg-red"></div>
+
+    <nav>
+        <div class="logo">TAYOB<span>.</span>TECHNOLOGY</div>
+        <div class="nav-links">
+            <a href="#cctv">Security</a>
+            <a href="#it">Computing</a>
+            <a href="#contact">Contact</a>
+            <button id="cart-trigger">Cart (0)</button>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <span class="badge" style="margin-bottom: 1rem;">Premier Technology Partner</span>
+        <h1><span class="blue">Intelligence</span> Meets <span class="red">Defense.</span></h1>
+        <p style="color: var(--muted); max-width: 700px; margin: 0 auto 2rem;">
+            Johannesburg's elite provider for CCTV surveillance, enterprise IT hardware, and mission-critical network infrastructure.
+        </p>
+    </header>
+
+    <div class="section-header security" id="cctv">
+        <h2>CCTV & Surveillance</h2>
+        <span class="badge red">High Performance</span>
+    </div>
+    <div class="product-grid">
+        <div class="product-card sec">
+            <div class="img-placeholder">IP CAMERA</div>
+            <span class="badge red">Security</span>
+            <h3>4K Smart AI Turret</h3>
+            <p style="color: var(--muted); font-size: 0.85rem; margin-top: 0.5rem;">Night vision, human detection, and 2-way audio.</p>
+            <div class="price">R 1,450</div>
+            <button class="buy-btn red" onclick="addToCart('4K AI Camera')">Add to System</button>
+        </div>
+        <div class="product-card sec">
+            <div class="img-placeholder">NVR SYSTEM</div>
+            <span class="badge red">Security</span>
+            <h3>8-Channel NVR Hub</h3>
+            <p style="color: var(--muted); font-size: 0.85rem; margin-top: 0.5rem;">4TB Storage included. Remote cloud access enabled.</p>
+            <div class="price">R 5,800</div>
+            <button class="buy-btn red" onclick="addToCart('8CH NVR')">Add to System</button>
+        </div>
+        <div class="product-card sec">
+            <div class="img-placeholder">BIOMETRIC</div>
+            <span class="badge red">Access</span>
+            <h3>Facial Recognition Terminal</h3>
+            <p style="color: var(--muted); font-size: 0.85rem; margin-top: 0.5rem;">Touchless entry protocol for high-security areas.</p>
+            <div class="price">R 3,200</div>
+            <button class="buy-btn red" onclick="addToCart('Biometric Terminal')">Add to System</button>
+        </div>
+    </div>
+
+    <div class="section-header" id="it">
+        <h2>Laptops & Computing</h2>
+        <span class="badge">Enterprise Grade</span>
+    </div>
+    <div class="product-grid">
+        <div class="product-card">
+            <div class="img-placeholder">LAPTOP</div>
+            <span class="badge">IT Hardware</span>
+            <h3>EliteBook Pro G9</h3>
+            <p style="color: var(--muted); font-size: 0.85rem; margin-top: 0.5rem;">Core i7, 16GB RAM, 512GB SSD. Built for power.</p>
+            <div class="price">R 18,500</div>
+            <button class="buy-btn" onclick="addToCart('EliteBook Pro')">Add to Cart</button>
+        </div>
+        <div class="product-card">
+            <div class="img-placeholder">WORKSTATION</div>
+            <span class="badge">Desktop</span>
+            <h3>Titan IT Workstation</h3>
+            <p style="color: var(--muted); font-size: 0.85rem; margin-top: 0.5rem;">Optimized for surveillance monitoring and dev work.</p>
+            <div class="price">R 12,900</div>
+            <button class="buy-btn" onclick="addToCart('Titan Workstation')">Add to Cart</button>
+        </div>
+        <div class="product-card">
+            <div class="img-placeholder">NETWORK</div>
+            <span class="badge">Infrastructure</span>
+            <h3>Ubiquiti Dream Machine</h3>
+            <p style="color: var(--muted); font-size: 0.85rem; margin-top: 0.5rem;">All-in-one networking console for home/office.</p>
+            <div class="price">R 7,400</div>
+            <button class="buy-btn" onclick="addToCart('UDM Pro')">Add to Cart</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <div class="logo" style="margin-bottom: 1.5rem;">TAYTECH<span>.</span></div>
+                <p style="color: var(--muted); font-size: 0.9rem;">The intersection of high-end security and professional IT solutions. Engineered in South Africa.</p>
+            </div>
+            <div>
+                <h4>Contact Terminal</h4>
+                <p style="color: var(--blue); margin-top: 1rem; font-weight: 700;">082 494 7099</p>
+                <p style="color: var(--muted); font-size: 0.9rem;">info@taytech.co.za</p>
+            </div>
+            <div>
+                <h4>HQ</h4>
+                <p style="color: var(--muted); font-size: 0.9rem;">Lenasia, JHB<br>Gauteng</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 4rem; color: #333; font-size: 0.7rem; border-top: 1px solid var(--border); padding-top: 2rem;">
+            &copy; 2026 TAYOB TECHNOLOGIES CC | BUILT BY CODEPULSE
+        </div>
+    </footer>
+
+    <script>
+        let cart = [];
+        const trigger = document.getElementById('cart-trigger');
+
+        function addToCart(item) {
+            cart.push(item);
+            trigger.innerText = `Cart (${cart.length})`;
+            
+            // Visual feedback on the button
+            event.target.innerText = "Added!";
+            event.target.style.background = "#00ff88";
+            setTimeout(() => {
+                event.target.innerText = event.target.classList.contains('red') ? "Add to System" : "Add to Cart";
+                event.target.style.background = "";
+            }, 1000);
+        }
+
+        // Parallax hover effect for cards
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--x', `${x}px`);
+                card.style.setProperty('--y', `${y}px`);
+            });
+        });
+    </script>
+</body>
+</html>
